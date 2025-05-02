@@ -21,7 +21,7 @@
       <a href="#">Blog</a>
       <a href="#">Contact</a>
     </nav>
-    <a href="#" class="btn purple"><i class="bx bx-rocket"></i> Hire Me</a>
+    <a href="#section1" class="btn purple"><i class="bx bx-rocket"></i> Hire Me</a>
   </header>
 
   <section class="hero">
@@ -32,14 +32,15 @@
     </div>
     <div class="hero-image animate">
       <div class="image-wrapper">
-        <img src="images/ME.png" alt="Profile Image"/>
+        <img src="images/t.jpg" alt="Profile Image"/>
       </div>
     </div>
   </section>
 
   <section class="aboutme">
     <div class="aboutme-intro">
-      <img src="images/ME.png" alt="Profile" class="aboutme-photo">
+      <img src="images/t.jpg
+      " alt="Profile" class="aboutme-photo">
       <div class="aboutme-text">
         <h2>Nice to meet you!</h2>
         <p>I’m a creative UI/UX Designer and Frontend Developer based in New York. I specialize in building modern, user-friendly websites and engaging digital experiences.</p>
@@ -182,16 +183,6 @@
     <div class="blog-scroll" data-aos="fade-up" id="blogScroll">
       <div class="blog-card">
         <img src="https://via.placeholder.com/300x200" alt="Blog Image">
-        <h3>Understanding Modern UI Design</h3>
-        <p>A quick dive into essential elements for a successful user experience in 2025.</p>
-      </div>
-      <div class="blog-card">
-        <img src="https://via.placeholder.com/300x200" alt="Blog Image">
-        <h3>Tips for Effective Portfolio Building</h3>
-        <p>Learn how to craft a portfolio that stands out and lands clients or jobs.</p>
-      </div>
-      <div class="blog-card">
-        <img src="https://via.placeholder.com/300x200" alt="Blog Image">
         <h3>Making Your Website Responsive</h3>
         <p>Master the key principles of responsive layouts with flexbox and grid.</p>
       </div>
@@ -215,7 +206,7 @@
     <div class="blog-nav-dots" id="blogDots">
       <span class="dot active" data-index="0"></span>
       <span class="dot" data-index="1"></span>
-      <span class="dot" data-index="2"></span>
+
     </div>
   </section>
 
@@ -299,7 +290,7 @@
     </div>
   </section>
 
-  <section class="contact-section" data-aos="fade-up">
+  <section id= "section1" class="contact-section" data-aos="fade-up">
     <div class="container">
       <div class="left-side">
         <h2>Let’s discuss your <span>Project</span></h2>
@@ -340,22 +331,50 @@
       <div class="right-side">
         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alte.</p>
 
-        <form>
-          <input type="text" placeholder="Name*" required />
-          <input type="email" placeholder="Email*" required />
-          <input type="text" placeholder="Location" />
-          <div class="half-inputs">
-            <input type="text" placeholder="Budget*" required />
-            <input type="text" placeholder="Subject*" required />
-          </div>
-          <textarea placeholder="Message*" required></textarea>
-          <button type="submit">
-            Submit <span class="iconify" data-icon="mdi:send" data-inline="false"></span>
-          </button>
-        </form>
-      </div>
-    </div>
+     <!-- Include EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<!-- Contact Form -->
+<form id="contact-form">
+  <input type="text" name="name" placeholder="Name*" required />
+  <input type="email" name="email" placeholder="Email*" required />
+  <input type="text" name="location" placeholder="Location" />
+
+  <div class="half-inputs">
+    <input type="text" name="budget" placeholder="Budget*" required />
+    <input type="text" name="subject" placeholder="Subject*" required />
+  </div>
+
+  <textarea name="message" placeholder="Message*" required></textarea>
+
+  <button type="submit">
+    Submit <span class="iconify" data-icon="mdi:send"></span>
+  </button>
+</form>
+
   </section>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <script>
+    (function () {
+      emailjs.init("63H9BS4Pw_dZVe0Rx"); // Replace with your Public Key
+    })();
+    
+    // Form submission
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+    
+      emailjs.sendForm("service_e4hdk3s", "template_9f34xva", this)
+        .then(function () {
+          alert("Message sent successfully!");
+          document.getElementById("contact-form").reset();
+        }, function (error) {
+          alert("Failed to send message. Please try again.");
+          console.error("Error:", error);
+        });
+    });
+    
+    </script>
 
   <footer class="footer-section">
     <div class="footer-content">
@@ -388,6 +407,7 @@
   <script src="index.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
+
 
 </body>
 </html>
